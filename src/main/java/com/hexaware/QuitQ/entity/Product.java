@@ -19,7 +19,7 @@ public class Product {
 	private Integer quantity;
 	@Enumerated(EnumType.STRING)
 	private CategoryEnum category;
-	private Seller seller;
+	private Seller seller;// this we have to check
 	public long getProductId() {
 		return productId;
 	}
