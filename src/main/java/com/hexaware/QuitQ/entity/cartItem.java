@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,6 +14,18 @@ public class CartItem {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long cartItemId;
 	private Integer cartItemQuantity;
+	@OneToOne
+	private Product cartProduct;
+	public CartItem() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public CartItem(long cartItemId, Integer cartItemQuantity, Product cartProduct) {
+		super();
+		this.cartItemId = cartItemId;
+		this.cartItemQuantity = cartItemQuantity;
+		this.cartProduct = cartProduct;
+	}
 	public long getCartItemId() {
 		return cartItemId;
 	}
@@ -25,18 +38,17 @@ public class CartItem {
 	public void setCartItemQuantity(Integer cartItemQuantity) {
 		this.cartItemQuantity = cartItemQuantity;
 	}
-	public CartItem(long cartItemId, Integer cartItemQuantity) {
-		super();
-		this.cartItemId = cartItemId;
-		this.cartItemQuantity = cartItemQuantity;
+	public Product getCartProduct() {
+		return cartProduct;
 	}
-	public CartItem() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setCartProduct(Product cartProduct) {
+		this.cartProduct = cartProduct;
 	}
 	@Override
 	public String toString() {
-		return "CartItem [cartItemId=" + cartItemId + ", cartItemQuantity=" + cartItemQuantity + "]";
+		return "CartItem [cartItemId=" + cartItemId + ", cartItemQuantity=" + cartItemQuantity + ", cartProduct="
+				+ cartProduct + "]";
 	}
+
 
 }
